@@ -19,7 +19,10 @@ function getRepoContributors(repoOwner, repoName, cb) {
   request(options, function (error, response, body) {
     console.log('error:', error);
     console.log('response:', response.statusCode);
-    console.log('body', body);
+    body = JSON.parse(body);
+    for(var cont in body) {
+      console.log('body', body[cont]['avatar_url']);
+    }
   });
   // request.get(requestURL)
   //         .on('response', function (response) {
