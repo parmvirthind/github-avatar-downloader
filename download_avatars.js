@@ -7,7 +7,10 @@ var GITHUB_USER = "parmvirthind";
 var GITHUB_TOKEN = "b6b728add7fbdd2f10aa1e5fe451507ac94b8718";
 
 
-function getRepoContributors(repoOwner, repoName, cb) {
+function getRepoContributors(cb) {
+  var myArgs = process.argv.slice(2);
+  var repoOwner = myArgs[0];
+  var repoName = myArgs[1];
   var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
 
   var options = {
@@ -35,7 +38,7 @@ function downloadImageByURL(url, filePath) {
 }
 
 
-getRepoContributors('jquery', 'jquery', function(err, result) {
+getRepoContributors(function(err, result) {
   if (err) {
     console.log('Errors:', err);
   } else {
